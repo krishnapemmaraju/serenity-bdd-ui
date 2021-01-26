@@ -1,6 +1,5 @@
 package com.test.driverwrappers;
 
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 public class WebElementFacadeWrapper {

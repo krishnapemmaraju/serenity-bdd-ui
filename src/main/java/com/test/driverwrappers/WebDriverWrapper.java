@@ -1,11 +1,8 @@
 package com.test.driverwrappers;
 
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -32,7 +29,6 @@ public class WebDriverWrapper extends PageObject {
 	}
 
 	public WebElementFacade findElement(WebElementFacade eleemnt ) {
-	    int attempts = 0;
 	((JavascriptExecutor)driver).executeScript("arguments[0].focus", eleemnt.getElement());
 	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView({block: 'center'})", eleemnt.getElement());
 	/*((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView()", retElement.getWebElement());

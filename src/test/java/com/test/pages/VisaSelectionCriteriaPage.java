@@ -1,6 +1,6 @@
 package com.test.pages;
 
-import com.test.implementation.GovUKVisaSelectCriteria;
+import com.serenity.test.implementation.GovUKVisaSelectCriteria;
 
 import net.thucydides.core.annotations.Step;
 
@@ -13,8 +13,8 @@ public class VisaSelectionCriteriaPage {
 		visaSelPage.selectNationalityAndReason(nationality,reason);
 	}
 	
-	@Step
-	public void validateOutcome(String outcome) {
-		visaSelPage.validateOutcome(outcome);
+	
+	public String validateOutcome() {
+		return visaSelPage.validateOutcome();
 	}
 }

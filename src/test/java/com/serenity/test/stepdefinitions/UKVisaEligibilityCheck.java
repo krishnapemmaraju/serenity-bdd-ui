@@ -1,4 +1,6 @@
-package starter.stepdefinitions;
+package com.serenity.test.stepdefinitions;
+
+import org.junit.Assert;
 
 import com.test.pages.HomePage;
 import com.test.pages.UKImmigrationStatusChk;
@@ -10,9 +12,10 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-public class UKTouristVisaCheck {
+public class UKVisaEligibilityCheck {
 	
 	@Steps
 	HomePage page;
@@ -23,25 +26,32 @@ public class UKTouristVisaCheck {
 	@Steps
 	UKImmigrationStatusChk ukImgStatusChk;
 	
-	@Before
-	public void luancHomePage() {
-		page.lauchURL();
-	}
+	private String nationality;
+	private String reasonToVisit;
 	
+	@Before
+	public void launcHomePage() {
+		page.lauchURL();
+	} 
+	
+
 	@Given("the UK-Visa Home page")
 	public void the_uk_visa_home_page() {
-	    page.validateHomePage();
+	    Assert.assertTrue(page.validateHomePage());
 	}
-
 	
 	@When("user checks eligibility for {string} nationality with reason to visit UK as {string}")
-	public void user_checks_eligibility_for_natijonality_with_reason_as(String nationality, String reason) {
-	     VisaSelpage.selectNationalityAndReason(nationality,reason);
+	public void user_checks_eligibility_for_nationality_with_reason_as(String nationality, String reasonToVisit) {
+		 this.nationality = nationality;
+		 this.reasonToVisit = reasonToVisit;
+	     VisaSelpage.selectNationalityAndReason(nationality,reasonToVisit);
 	}
 
 	@Then("should see the message {string}")
 	public void should_see_the_message(String outcome) { 
-	     VisaSelpage.validateOutcome(outcome);
+		 String visaOutcomeMessage = VisaSelpage.validateOutcome();
+		 Assert.assertTrue(visaOutcomeMessage.trim().equals(outcome.trim()));
+		 Serenity.recordReportData().withTitle(" Visa Eligibility Outcome message for " + this.nationality + " Nationality to visit UK for " + this.reasonToVisit + " is : ").andContents(visaOutcomeMessage.trim());
 	}
 	
 	@When("select planning to work in UK as {string}")
@@ -52,6 +62,11 @@ public class UKTouristVisaCheck {
 	@When("select family member immigration status {string}")
 	public void select_family_member_immigration_status(String immgStatus) {
 		ukImgStatusChk.FamilyVisaUKImmigrationChk(immgStatus);
+	}
+	
+	@When("select duration of study in UK as {string}")
+	public void select_duration_of_study_in_uk_as(String selCriteria) {
+		wrkVisaCriSel.WorkVisaCriteriaSele(selCriteria);
 	}
 	
 	@After

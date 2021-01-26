@@ -7,11 +7,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import net.serenitybdd.core.pages.PageObject;
-import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 
 public class Setup extends PageObject {
 	

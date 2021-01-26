@@ -1,7 +1,6 @@
 package com.test.pages;
 
-import com.test.implementation.GovUKVisaSelectCriteria;
-import com.test.implementation.GovUKWorkVisaSelecCriteria;
+import com.serenity.test.implementation.GovUKWorkVisaSelecCriteria;
 
 import net.thucydides.core.annotations.Step;
 
