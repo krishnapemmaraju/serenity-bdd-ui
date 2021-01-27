@@ -16,3 +16,30 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
+
+# Build Artifacts
+
+
+.gradle/
+build/
+target/
+bin/
+dependency-reduced-pom.xml
+
+*.iml
+*.ipr
+*.iws
+*.idea
+.metadata
+.idea/
+.idea/**/gradle.xml
+/out/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_eid*
+*.log
